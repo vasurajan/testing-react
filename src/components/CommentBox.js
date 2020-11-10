@@ -1,4 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+// this is going to grab all the actions out of our actions index.js file
+import * as actions from 'actions';
 
 class CommentBox extends React.Component {
     constructor(props) {
@@ -17,7 +21,9 @@ class CommentBox extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // call an action creator and save the comment
+
+        this.props.saveComment(this.state.comment);
+
         this.setState({
             comment: ""
         })
@@ -36,4 +42,4 @@ class CommentBox extends React.Component {
     }
 }
 
-export default CommentBox
+export default connect(null, actions)(CommentBox)
