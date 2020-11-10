@@ -1,14 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// shallow here is a function that we're going to use to render out a instance of our app component.
+import { shallow } from 'enzyme';
+
 import App from '../App';
+import CommentBox from '../CommentBox';
+import CommentList from '../CommentList';
 
 // it => organizes our tests and contains the test description and function containing test logic
-it("verifies component existence", () => {
-    const div = document.createElement('div'); // fake div created by JSDOM to trick React
-    ReactDOM.render(<App />, div)
+it("verifies componentbox existence", () => {
+    // wrapped is to indicate that the object that we got back is a wrapped version of our app component
+    // means that this is a component that has some additional functionality loaded on the top
+    const wrapped = shallow(<App />);
+    // find every copy of commentbox inside of wrapped version of our app component
+    expect(wrapped.find(CommentBox).length).toEqual(1);
+})
 
-    // check if comment box is inside this div here
-    expect(div.innerHTML).toContain('Comment Box')
-
-    ReactDOM.unmountComponentAtNode(div); // cleanup at the end
+it("verifies componentlist existence", () => {
+    // wrapped is to indicate that the object that we got back is a wrapped version of our app component
+    // means that this is a component that has some additional functionality loaded on the top
+    const wrapped = shallow(<App />);
+    // find every copy of commentbox inside of wrapped version of our app component
+    expect(wrapped.find(CommentList).length).toEqual(1);
 })
