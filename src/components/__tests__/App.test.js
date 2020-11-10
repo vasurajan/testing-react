@@ -2,9 +2,9 @@ import React from 'react';
 // shallow here is a function that we're going to use to render out a instance of our app component.
 import { shallow } from 'enzyme';
 
-import App from '../App';
-import CommentBox from '../CommentBox';
-import CommentList from '../CommentList';
+import App from 'components/App';
+import CommentBox from 'components/CommentBox';
+import CommentList from 'components/CommentList';
 
 // it => organizes our tests and contains the test description and function containing test logic
 it("verifies componentbox existence", () => {
